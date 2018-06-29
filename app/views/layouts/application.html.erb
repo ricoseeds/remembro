@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Remembro</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= favicon_link_tag 'lightbulb.png', type: 'image/png' %> 
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <%= image_tag("lightbulb.png", alt: "logo", size:"35x35", class: "product-logo") %>
+        <a class="navbar-brand" href="#">Remembro</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+      </nav>
+  </head>
+
+  <body>
+    <div class="container">
+      <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>
+
+<script type="text/javascript">
+  $( ".product-logo" ).click(function() {
+    $(this).css("background", "radial-gradient(yellow, #f8f9fa, #f8f9fa)")
+  });
+</script>

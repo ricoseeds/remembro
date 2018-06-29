@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-md-2" id="sidebar-container">
+  <div class="sidebar">
+    <ul class="list-group">
+      <% ("A".."Z").to_a.shuffle.each do |alpha| %>
+        <li class="list-group-item" id="alplabet_<%= alpha %>" style="text-align-last: center; " onclick="bring_words(this)"><%= alpha %></li>
+      <% end %>
+    </ul>
+    </div>
+  </div>
+
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new word</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for :vocab, url: words_path do |f| %>
+          <%= f.input :aword, as: :string %>
+          <%= f.input :meaning, as: :string %>
+          <%= f.submit "Save changes", class:"btn btn-sm btn-primary pull-right", id:"save_word" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="col-md-10" id="wordcanvas">
+    <div class="row" id="task_list">
+      <span id="task_bar" onclick="test()">
+        <button type="button" id="add_new" class="btn btn-success fa fa-plus" data-toggle="tooltip" data-placement="right" title="Add new word">
+        </button>
+      </span>
+    </div>
+    <div id="list-word-filter">
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+  $(".vocab").on('submit', function(){
+    $('#save_word').removeAttr("disabled");
+    $('#addModal').modal('hide');
+  })
+  function bring_words(caller){
+    $(caller).css("background-color", "#fffffa");
+    var alpha = $(caller).attr('id').split('_')[1];
+    $.ajax({
+    type: 'get',
+    url: '/words/filter',
+    data: {alpha_search: alpha},
+      success: function(data) {
+        eval(data); 
+      }
+    });
+  }
+  function test(){
+    $('#save_word').removeAttr("disabled");
+    $('#addModal').modal('show');
+  }
+  $(document).ready(function(){
+    $('#save_word').removeClass("disabled");
+    $('#add_new').tooltip();
+    $.get( "/words", function() {});
+  });
+</script>

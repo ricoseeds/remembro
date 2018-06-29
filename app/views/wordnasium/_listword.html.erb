@@ -1,0 +1,11 @@
+<% words.each do |word| %>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><b><%= word.aword %></b></h5>
+      <h6 class="card-subtitle mb-2 text-muted">created at <%= word.created_at.strftime("%B %d, %Y") %></h6>
+      	<% word.meanings.each do |meaning| %>
+      		<p class="card-text"><i><%= meaning.describe %></i></p>
+      	<% end %>
+    </div>
+  </div>
+<% end %>
