@@ -7,7 +7,7 @@
 
         $ cd remembro && bundle install
 
-2. create database.yml and .env
+2. create database.yml
 
         $ cp config/database.yml.example config/database.yml
 
