@@ -19,7 +19,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for :vocab, url: words_path do |f| %>
+        <%= simple_form_for :vocab, remote: true, url: words_path do |f| %>
           <%= f.input :aword, as: :string %>
           <%= f.input :meaning, as: :string %>
           <%= f.submit "Save changes", class:"btn btn-sm btn-primary pull-right", id:"save_word" %>

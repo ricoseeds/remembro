@@ -2,9 +2,12 @@ class WordsController < ApplicationController
   skip_before_action :verify_authenticity_token  
 
 	def create
-		word = Word.new(aword: params[:vocab][:aword])
-		word.meanings.build(describe: params[:vocab][:meaning])
-		word.save
+		@word = Word.new(aword: params[:vocab][:aword])
+		@word.meanings.build(describe: params[:vocab][:meaning])
+		@word.save
+	  respond_to do |format|
+	    format.js {}
+	  end
 	end
 
 	def index

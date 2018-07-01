@@ -1,2 +1,2 @@
 $('#list-word-filter').empty()
-$('#list-word-filter').append("<%= escape_javascript render(:partial => 'wordnasium/listword', :locals => { :words => @words }) %>");
+$('#list-word-filter').append("<%= escape_javascript render(:partial => 'wordnasium/listword', :locals => { :words => @words, :born => false }) %>");

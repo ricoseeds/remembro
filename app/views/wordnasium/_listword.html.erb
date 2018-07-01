@@ -1,9 +1,14 @@
 <% words.each_with_index do |word, index| %>
   <div class="card" id="card_<%= dom_id(word) %>">
     <div class="card-body">
-    	<button type="button" id="remove_word_<%= dom_id(word) %>" class="btn btn-danger fa fa-close delete-word">
+    	<button id="remove_word_<%= dom_id(word) %>" class="btn btn-danger fa fa-close delete-word">
 	    </button>
-      <h5 class="card-title" id="<%= dom_id(word) %>"><b>#<%= index + 1 %><br/><%= word.aword %></b></h5>
+	    <% if born %>
+	      <h5 class="card-title" id="<%= dom_id(word) %>"><b><br/><%= word.aword %></b><span class="badge badge-primary">New</span></h5>
+	    <% else %>
+		    <h5 class="card-title" id="<%= dom_id(word) %>"><b>#<%= index + 1 %><br/><%= word.aword %></b></h5>
+	    <% end %>
+
       <h6 class="card-subtitle mb-2 text-muted">created at <%= word.created_at.strftime("%B %d, %Y") %></h6>
       	<% word.meanings.each do |meaning| %>
       		<p class="card-text" id="<%= dom_id(meaning)%>"><i><%= meaning.describe %></i></p>
@@ -33,17 +38,16 @@
 </div>
 
 <script type="text/javascript">
-	$(document).on("click", ".affirm-del", function (event) { 
+	$(".affirm-del").on("click", function () { 
     $.ajax({
     type: 'delete',
     url: '/words/' + $(this).attr('id'),
       success: function(data) {
-        eval(data); 
+        $('#destroyer').modal('hide')
       }
     });
-    event.preventDefault();
 	});
-	$(document).on("click", ".delete-word", function () {
+	$(".delete-word").on("click", function () {
 		$(".affirm-del").attr('id', $(this).attr('id'))
 		$("#destroyer").modal('show')
 	});
