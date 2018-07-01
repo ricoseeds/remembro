@@ -4,7 +4,7 @@
     	<button id="remove_word_<%= dom_id(word) %>" class="btn btn-danger fa fa-close delete-word">
 	    </button>
 	    <% if born %>
-	      <h5 class="card-title" id="<%= dom_id(word) %>"><b><br/><%= word.aword %></b><span class="badge badge-primary">New</span></h5>
+	      <h5 class="card-title" id="<%= dom_id(word) %>"><b><br/><%= word.aword + " " %></b><span class="badge badge-warning new-message">New</span></h5>
 	    <% else %>
 		    <h5 class="card-title" id="<%= dom_id(word) %>"><b>#<%= index + 1 %><br/><%= word.aword %></b></h5>
 	    <% end %>
