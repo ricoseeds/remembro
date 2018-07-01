@@ -1,11 +1,50 @@
-<% words.each do |word| %>
-  <div class="card">
+<% words.each_with_index do |word, index| %>
+  <div class="card" id="card_<%= dom_id(word) %>">
     <div class="card-body">
-      <h5 class="card-title"><b><%= word.aword %></b></h5>
+    	<button type="button" id="remove_word_<%= dom_id(word) %>" class="btn btn-danger fa fa-close delete-word">
+	    </button>
+      <h5 class="card-title" id="<%= dom_id(word) %>"><b>#<%= index + 1 %><br/><%= word.aword %></b></h5>
       <h6 class="card-subtitle mb-2 text-muted">created at <%= word.created_at.strftime("%B %d, %Y") %></h6>
       	<% word.meanings.each do |meaning| %>
-      		<p class="card-text"><i><%= meaning.describe %></i></p>
+      		<p class="card-text" id="<%= dom_id(meaning)%>"><i><%= meaning.describe %></i></p>
       	<% end %>
     </div>
   </div>
 <% end %>
+
+<div class="modal fade" id="destroyer" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <i>Are you sure you want to delete this word?</i>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-danger affirm-del">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+	$(document).on("click", ".affirm-del", function (event) { 
+    $.ajax({
+    type: 'delete',
+    url: '/words/' + $(this).attr('id'),
+      success: function(data) {
+        eval(data); 
+      }
+    });
+    event.preventDefault();
+	});
+	$(document).on("click", ".delete-word", function () {
+		$(".affirm-del").attr('id', $(this).attr('id'))
+		$("#destroyer").modal('show')
+	});
+</script>
