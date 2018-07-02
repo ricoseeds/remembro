@@ -1,3 +1,4 @@
 $('#list-word-filter').empty()
+$("#loader").remove();
 $('#list-word-filter').append("<%= escape_javascript render(:partial => 'wordnasium/listword', :locals => { :words => @words, :born => false }) %>");
 $('.alphashow').html("<%= params[:alpha_search] %>")
