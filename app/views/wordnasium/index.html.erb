@@ -54,7 +54,7 @@
     $('#addModal').modal('hide');
   })
   function bring_words(caller){
-    $(caller).css("background-color", "#fffffa");
+    $(caller).css("background", "linear-gradient(to right, #deefe8, #fff)");
     var alpha = $(caller).attr('id').split('_')[1];
     $.ajax({
     type: 'get',
