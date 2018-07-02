@@ -1,2 +1,2 @@
 $("#loader").remove();
-$('#list-word-filter').append("<%= escape_javascript render(:partial => 'wordnasium/listword', :locals => { :words => @words, :born => false }) %>");
+$('#list-word-filter').html("<%= escape_javascript render(:partial => 'wordnasium/listword', :locals => { :words => @words, :born => false }) %>");

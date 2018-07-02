@@ -7,16 +7,16 @@
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
       <%= favicon_link_tag 'lightbulb.png', type: 'image/png' %> 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <%= image_tag("lightbulb.png", alt: "logo", size:"35x35", class: "product-logo") %>
-        <a class="navbar-brand" href="#">Remembro</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-      </nav>
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <%= image_tag("lightbulb.png", alt: "logo", size:"35x35", class: "product-logo") %>
+      <a class="navbar-brand">Remembro</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
     <div class="container">
       <% flash.each do |key, value| %>
           <div class="alert alert-<%= key %>"><%= value %></div>
@@ -27,6 +27,10 @@
 </html>
 
 <script type="text/javascript">
+  $( ".navbar-brand" ).click(function() {
+    $("#list-word-filter").append("<img alt='logo' id='loader'src='/assets/loader.gif'>")
+    $.get( "/words", function() {});
+  });
   $( ".product-logo" ).click(function() {
     $(this).css("background", "radial-gradient(yellow, #f8f9fa, #f8f9fa)")
   });
