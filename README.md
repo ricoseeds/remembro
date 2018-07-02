@@ -20,3 +20,9 @@
         $ rails db:create && rails db:migrate 
 
         $ rails s
+## TO-DO
+### Auth, NLP tool and Games
+
+- [ ] Authentication
+- [ ] Given a word, a meaning is to be inputed by user. Machine will predict if the meaning is correct or not with certain confidense level that would be fed back to user.
+- [ ] A timed, continuous word predicing game
