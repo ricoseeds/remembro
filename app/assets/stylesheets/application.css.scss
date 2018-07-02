@@ -16,13 +16,12 @@
 @import "bootstrap";
 @import "font-awesome";
 body{
-
-    padding-bottom: 0px !important;
-
+  /*background: linear-gradient(#dee5ff, #fff, #fff);*/
+  padding-bottom: 0px !important;
 }
 .container {
   max-width: 100%;
-  max-height: calc(100vh - 120px);
+  max-height: calc(100vh - 60px);
 }
 
 ::-webkit-scrollbar {
@@ -84,15 +83,16 @@ li:hover:nth-child(even) {
   border-radius: 86%;
   background-color: #6284ff;
   border-color: #fff;
-  margin-top: -137%;
+  margin-top: -197%;
   box-shadow: 0px 5px 10px rgba(0,0,0,0.4);
+  z-index: 100;
 }
 
 #add_new:hover {
   border-radius: 86%;
   background-color: #8ca5ff;
   border-color: #fff;
-  margin-top: -137%;
+  margin-top: -197%;
 }
 
 
@@ -121,4 +121,17 @@ li:hover:nth-child(even) {
 .new-message {
   background-color: #ffad72;
   color: #fff;
+}
+
+#chosen_word{
+  z-index: 99;
+  position: fixed;
+  width: 90%;
+  height: 30px;
+  background-color: #fff;
+  margin-top: 0%;
+}
+
+#list-word-filter {
+  margin-top: 5%;
 }

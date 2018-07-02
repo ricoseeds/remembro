@@ -8,7 +8,6 @@
 	    <% else %>
 		    <h5 class="card-title" id="<%= dom_id(word) %>"><b>#<%= index + 1 %><br/><%= word.aword %></b></h5>
 	    <% end %>
-
       <h6 class="card-subtitle mb-2 text-muted">created at <%= word.created_at.strftime("%B %d, %Y") %></h6>
       	<% word.meanings.each do |meaning| %>
       		<p class="card-text" id="<%= dom_id(meaning)%>"><i><%= meaning.describe %></i></p>
