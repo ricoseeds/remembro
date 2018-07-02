@@ -1,6 +1,6 @@
 # Remembro -- A vocabulary building tool
 
-[Click here to view the app ~](https://www.google.com)
+[Click here to view the app ~](https://sleepy-beyond-18639.herokuapp.com/)
 
 ![screen shot 2018-07-02 at 11 03 08 am](https://user-images.githubusercontent.com/17334660/42146761-96c393b8-7de7-11e8-9ef4-f13833dc4917.png)
 
