@@ -1,5 +1,5 @@
 # Remembro -- A vocabulary building tool
-![screen shot 2018-07-01 at 4 18 17 pm](https://user-images.githubusercontent.com/17334660/42133589-6d7acf8c-7d4a-11e8-94ad-3ed475eba9f2.png)
+![screen shot 2018-07-02 at 11 03 08 am](https://user-images.githubusercontent.com/17334660/42146761-96c393b8-7de7-11e8-9ef4-f13833dc4917.png)
 
 ## Pre-requisites
 
