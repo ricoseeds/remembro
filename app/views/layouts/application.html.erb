@@ -28,6 +28,7 @@
 
 <script type="text/javascript">
   $( ".navbar-brand" ).click(function() {
+    $('#list-word-filter').empty();
     $("#list-word-filter").append("<img alt='logo' id='loader'src='/assets/loader.gif'>")
     $.get( "/words", function() {});
   });
