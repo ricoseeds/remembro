@@ -54,6 +54,7 @@
     $('#addModal').modal('hide');
   })
   function bring_words(caller){
+    $('#list-word-filter').empty();
     $("#list-word-filter").append("<img alt='logo' id='loader'src='/assets/loader.gif'>")
     $(caller).css("background", "linear-gradient(to right, #deefe8, #fff)");
     var alpha = $(caller).attr('id').split('_')[1];
@@ -73,6 +74,7 @@
   $(document).ready(function(){
     $('#save_word').removeClass("disabled");
     $('#add_new').tooltip();
+    $('#list-word-filter').empty();
     $("#list-word-filter").append("<img alt='logo' id='loader'src='/assets/loader.gif'>")
     $.get( "/words", function() {});
   });
