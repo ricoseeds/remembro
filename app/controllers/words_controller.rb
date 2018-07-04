@@ -31,6 +31,10 @@ class WordsController < ApplicationController
 		render json: {word: @word.aword, meaning: @word.meanings.first.describe}
 	end
 
+	def edit
+		binding.pry
+	end
+
 	def filter
 		@words = Word.where("aword ~* ?", "^#{params[:alpha_search]}")
 	  respond_to do |format|

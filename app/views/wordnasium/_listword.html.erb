@@ -46,11 +46,17 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for :vocab, remote: true, url: words_path do |f| %>
-          <%= f.input :aword, as: :string %>
-          <%= f.input :meaning, as: :string %>
-          <%= f.submit "Save changes", class:"btn btn-sm btn-primary pull-right", id:"save" %>
-        <% end %>
+        <form id="edit-form">
+          <div class="form-group">
+            <label for="Word">Word</label>
+            <input name="word" type="text" class="form-control" id="word_field">
+          </div>
+          <div class="form-group">
+            <label for="Meaning">Meaning</label>
+            <input name="meaning" type="text" class="form-control" id="meaning_field">
+          </div>
+          <button type="submit" class="btn btn-primary pull-right" id="edit-button">Edit</button>
+        </form>
       </div>
     </div>
   </div>
@@ -58,17 +64,18 @@
 
 
 <script type="text/javascript">
+  $("#edit-button").on('click', function(){
+    debugger
+  });
   $(".card").on('click', function(){
-    $('#edit-word #vocab_aword').val("");
-    $('#edit-word #vocab_meaning').val("");
     $("#edit-word").modal('show');
     var card_id = $(this).attr('id')
     $.ajax({
       type: 'get',
       url: '/words/' + card_id,
         success: function(data) {
-        $('#edit-word #vocab_aword').val(data.word);
-        $('#edit-word #vocab_meaning').val(data.meaning);
+        $('#edit-word #word_field').val(data.word);
+        $('#edit-word #meaning_field').val(data.meaning);
       }
     });
   });
