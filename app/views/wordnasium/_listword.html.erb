@@ -36,7 +36,44 @@
   </div>
 </div>
 
+<div class="modal fade" id="edit-word" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new word</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for :vocab, remote: true, url: words_path do |f| %>
+          <%= f.input :aword, as: :string %>
+          <%= f.input :meaning, as: :string %>
+          <%= f.submit "Save changes", class:"btn btn-sm btn-primary pull-right", id:"save_word" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <script type="text/javascript">
+  $(".card").on('click', function(){
+    $('#edit-word #vocab_aword').val("");
+    $('#edit-word #vocab_meaning').val("");
+    $("#edit-word").modal('show');
+    var card_id = $(this).attr('id')
+    $('#edit-word').on('shown.bs.modal', {card: card_id}, function (e) {
+    $.ajax({
+      type: 'get',
+      url: '/words/' + e.data.card,
+        success: function(data) {
+          $('#edit-word #vocab_aword').val(data.word);
+          $('#edit-word #vocab_meaning').val(data.meaning);
+        }
+      });
+    })
+  });
 	$(".affirm-del").on("click", function () { 
     $.ajax({
     type: 'delete',

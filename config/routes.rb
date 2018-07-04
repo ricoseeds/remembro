@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :wordnasium, only: [:index]
   root 'wordnasium#index'
-  resources :words, only: [:create, :index, :destroy] do
+  resources :words do
   	collection do 
 	  	get :filter
 	  end

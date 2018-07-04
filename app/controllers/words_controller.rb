@@ -17,16 +17,22 @@ class WordsController < ApplicationController
 	  end
 	end
 
-	def filter
-		@words = Word.where("aword ~* ?", "^#{params[:alpha_search]}")
+	def destroy
+		@word = Word.find(params[:id].split("_").last)
+		@word.meanings.destroy_all && @word.delete if @word
 	  respond_to do |format|
 	    format.js {}
 	  end
 	end
 
-	def destroy
+	def show
 		@word = Word.find(params[:id].split("_").last)
-		@word.meanings.destroy_all && @word.delete if @word
+		#TODO Multiple field for meaning not implemented yet
+		render json: {word: @word.aword, meaning: @word.meanings.first.describe}
+	end
+
+	def filter
+		@words = Word.where("aword ~* ?", "^#{params[:alpha_search]}")
 	  respond_to do |format|
 	    format.js {}
 	  end
