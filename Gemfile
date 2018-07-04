@@ -39,6 +39,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem "font-awesome-rails"
 gem 'bootstrap', '~> 4.1.1'
+gem 'devise'
 
 group :production do 
   gem 'rails_12factor'
