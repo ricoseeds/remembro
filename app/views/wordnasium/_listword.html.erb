@@ -67,18 +67,18 @@
   $("#edit-button").on('click', function(){
     debugger
   });
-  $(".card").on('click', function(){
-    $("#edit-word").modal('show');
-    var card_id = $(this).attr('id')
-    $.ajax({
-      type: 'get',
-      url: '/words/' + card_id,
-        success: function(data) {
-        $('#edit-word #word_field').val(data.word);
-        $('#edit-word #meaning_field').val(data.meaning);
-      }
-    });
-  });
+  // $(".card").on('click', function(){
+  //   $("#edit-word").modal('show');
+  //   var card_id = $(this).attr('id')
+  //   $.ajax({
+  //     type: 'get',
+  //     url: '/words/' + card_id,
+  //       success: function(data) {
+  //       $('#edit-word #word_field').val(data.word);
+  //       $('#edit-word #meaning_field').val(data.meaning);
+  //     }
+  //   });
+  // });
 	$(".affirm-del").on("click", function () { 
     $.ajax({
     type: 'delete',
