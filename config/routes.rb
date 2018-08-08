@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :wordnasium, only: [:index]
   root 'wordnasium#index'
   resources :words do
